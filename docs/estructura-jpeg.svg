@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="612" viewBox="0 0 820 612" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<rect width="820" height="612" rx="14" fill="#010101"/>
+<text x="32" y="44" fill="#FA93FA" font-size="22" font-weight="700">Estructura de un JPEG y qué quita la limpieza</text>
+<text x="32" y="70" fill="#d6d6d6" font-size="14">Cada segmento empieza con FF xx y su longitud. La limpieza copia los segmentos enteros: no recomprime.</text>
+<rect x="32" y="90" width="756" height="34" rx="6" fill="#1b1024" stroke="#C967E8" stroke-width="1.5"/>
+<text x="46" y="112" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFD8</text>
+<text x="210" y="112" fill="#ffffff" font-size="14" font-weight="600">SOI</text>
+<text x="410" y="112" fill="#d6d6d6" font-size="13">inicio de imagen</text>
+<text x="774" y="112" fill="#5fe39a" font-size="13" font-weight="700" text-anchor="end">se conserva</text>
+<rect x="32" y="132" width="756" height="34" rx="6" fill="#1b1024" stroke="#C967E8" stroke-width="1.5"/>
+<text x="46" y="154" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFE0</text>
+<text x="210" y="154" fill="#ffffff" font-size="14" font-weight="600">APP0 JFIF</text>
+<text x="410" y="154" fill="#d6d6d6" font-size="13">densidad y versión</text>
+<text x="774" y="154" fill="#5fe39a" font-size="13" font-weight="700" text-anchor="end">se conserva</text>
+<rect x="32" y="174" width="756" height="34" rx="6" fill="#2a0a10" stroke="#ff5c6c" stroke-width="1.5"/>
+<text x="46" y="196" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFE1</text>
+<text x="210" y="196" fill="#ffffff" font-size="14" font-weight="600">APP1 Exif</text>
+<text x="410" y="196" fill="#d6d6d6" font-size="13">TIFF: IFD0, Exif, GPS, IFD1 y miniatura</text>
+<text x="774" y="196" fill="#ff7b88" font-size="13" font-weight="700" text-anchor="end">se elimina</text>
+<rect x="32" y="216" width="756" height="34" rx="6" fill="#2a0a10" stroke="#ff5c6c" stroke-width="1.5"/>
+<text x="46" y="238" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFE1</text>
+<text x="210" y="238" fill="#ffffff" font-size="14" font-weight="600">APP1 XMP</text>
+<text x="410" y="238" fill="#d6d6d6" font-size="13">XML de Adobe: autor, historial, ubicación</text>
+<text x="774" y="238" fill="#ff7b88" font-size="13" font-weight="700" text-anchor="end">se elimina</text>
+<rect x="32" y="258" width="756" height="34" rx="6" fill="#1b1024" stroke="#C967E8" stroke-width="1.5"/>
+<text x="46" y="280" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFE2</text>
+<text x="210" y="280" fill="#ffffff" font-size="14" font-weight="600">APP2 ICC_PROFILE</text>
+<text x="410" y="280" fill="#d6d6d6" font-size="13">perfil de color</text>
+<text x="774" y="280" fill="#5fe39a" font-size="13" font-weight="700" text-anchor="end">se conserva</text>
+<rect x="32" y="300" width="756" height="34" rx="6" fill="#2a0a10" stroke="#ff5c6c" stroke-width="1.5"/>
+<text x="46" y="322" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFED</text>
+<text x="210" y="322" fill="#ffffff" font-size="14" font-weight="600">APP13 Photoshop</text>
+<text x="410" y="322" fill="#d6d6d6" font-size="13">IPTC: autor, créditos, lugar</text>
+<text x="774" y="322" fill="#ff7b88" font-size="13" font-weight="700" text-anchor="end">se elimina</text>
+<rect x="32" y="342" width="756" height="34" rx="6" fill="#2a0a10" stroke="#ff5c6c" stroke-width="1.5"/>
+<text x="46" y="364" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFFE</text>
+<text x="210" y="364" fill="#ffffff" font-size="14" font-weight="600">COM</text>
+<text x="410" y="364" fill="#d6d6d6" font-size="13">comentario de texto</text>
+<text x="774" y="364" fill="#ff7b88" font-size="13" font-weight="700" text-anchor="end">se elimina</text>
+<rect x="32" y="384" width="756" height="34" rx="6" fill="#1b1024" stroke="#C967E8" stroke-width="1.5"/>
+<text x="46" y="406" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFDB / FFC0 / FFC4</text>
+<text x="210" y="406" fill="#ffffff" font-size="14" font-weight="600">DQT, SOF, DHT</text>
+<text x="410" y="406" fill="#d6d6d6" font-size="13">tablas y dimensiones para decodificar</text>
+<text x="774" y="406" fill="#5fe39a" font-size="13" font-weight="700" text-anchor="end">se conserva</text>
+<rect x="32" y="426" width="756" height="34" rx="6" fill="#1b1024" stroke="#C967E8" stroke-width="1.5"/>
+<text x="46" y="448" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFDA</text>
+<text x="210" y="448" fill="#ffffff" font-size="14" font-weight="600">SOS + datos comprimidos</text>
+<text x="410" y="448" fill="#d6d6d6" font-size="13">la imagen en sí: se copia byte a byte</text>
+<text x="774" y="448" fill="#5fe39a" font-size="13" font-weight="700" text-anchor="end">se conserva</text>
+<rect x="32" y="468" width="756" height="34" rx="6" fill="#1b1024" stroke="#C967E8" stroke-width="1.5"/>
+<text x="46" y="490" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">FFD9</text>
+<text x="210" y="490" fill="#ffffff" font-size="14" font-weight="600">EOI</text>
+<text x="410" y="490" fill="#d6d6d6" font-size="13">fin de imagen</text>
+<text x="774" y="490" fill="#5fe39a" font-size="13" font-weight="700" text-anchor="end">se conserva</text>
+<rect x="32" y="510" width="756" height="34" rx="6" fill="#2a0a10" stroke="#ff5c6c" stroke-width="1.5"/>
+<text x="46" y="532" fill="#bdbdbd" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">...</text>
+<text x="210" y="532" fill="#ffffff" font-size="14" font-weight="600">Datos tras EOI</text>
+<text x="410" y="532" fill="#d6d6d6" font-size="13">imágenes MPF, video de Motion Photo</text>
+<text x="774" y="532" fill="#ff7b88" font-size="13" font-weight="700" text-anchor="end">se elimina</text>
+<text x="32" y="576" fill="#d6d6d6" font-size="13">APP14 (Adobe) también se conserva. Cualquier otro APPn se elimina.</text>
+</svg>

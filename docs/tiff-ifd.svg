@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#983AD6"/></marker></defs>
+<rect width="900" height="540" rx="14" fill="#010101"/>
+<text x="32" y="44" fill="#FA93FA" font-size="22" font-weight="700">Bloque TIFF dentro del EXIF</text>
+<text x="32" y="70" fill="#d6d6d6" font-size="14">Todos los offsets se cuentan desde el inicio del bloque TIFF. Cada entrada de IFD mide 12 bytes.</text>
+<rect x="32" y="95" width="250" height="120" rx="8" fill="#1b1024" stroke="#C967E8" stroke-width="2"/>
+<text x="46" y="121" fill="#FA93FA" font-size="16" font-weight="700">Cabecera (8 bytes)</text>
+<text x="46" y="145" fill="#e6e6e6" font-size="13">"II" little endian o "MM" big endian</text>
+<text x="46" y="166" fill="#e6e6e6" font-size="13">42 (número mágico)</text>
+<text x="46" y="187" fill="#e6e6e6" font-size="13">offset de IFD0</text>
+<rect x="330" y="95" width="270" height="205" rx="8" fill="#1b1024" stroke="#C967E8" stroke-width="2"/>
+<text x="344" y="121" fill="#FA93FA" font-size="16" font-weight="700">IFD0 (imagen principal)</text>
+<text x="344" y="145" fill="#e6e6e6" font-size="13">Marca, Modelo, Software</text>
+<text x="344" y="166" fill="#e6e6e6" font-size="13">Orientación, Fecha de modificación</text>
+<text x="344" y="187" fill="#e6e6e6" font-size="13">Autor (Artist), Copyright</text>
+<text x="344" y="208" fill="#e6e6e6" font-size="13">0x8769: puntero a Exif IFD</text>
+<text x="344" y="229" fill="#e6e6e6" font-size="13">0x8825: puntero a GPS IFD</text>
+<text x="344" y="250" fill="#e6e6e6" font-size="13">siguiente IFD: IFD1</text>
+<rect x="640" y="95" width="228" height="160" rx="8" fill="#1b1024" stroke="#C967E8" stroke-width="2"/>
+<text x="654" y="121" fill="#FA93FA" font-size="16" font-weight="700">Exif IFD</text>
+<text x="654" y="145" fill="#e6e6e6" font-size="13">Exposición, apertura, ISO</text>
+<text x="654" y="166" fill="#e6e6e6" font-size="13">Fecha de captura, zona horaria</text>
+<text x="654" y="187" fill="#e6e6e6" font-size="13">Flash, focal, lente</text>
+<text x="654" y="208" fill="#e6e6e6" font-size="13">Dueño y números de serie</text>
+<rect x="640" y="285" width="228" height="140" rx="8" fill="#2a0a10" stroke="#ff5c6c" stroke-width="2"/>
+<text x="654" y="311" fill="#FA93FA" font-size="16" font-weight="700">GPS IFD</text>
+<text x="654" y="335" fill="#e6e6e6" font-size="13">Latitud y N/S</text>
+<text x="654" y="356" fill="#e6e6e6" font-size="13">Longitud y E/W</text>
+<text x="654" y="377" fill="#e6e6e6" font-size="13">Altitud, hora y fecha UTC</text>
+<rect x="330" y="340" width="270" height="140" rx="8" fill="#1b1024" stroke="#C967E8" stroke-width="2"/>
+<text x="344" y="366" fill="#FA93FA" font-size="16" font-weight="700">IFD1 (miniatura)</text>
+<text x="344" y="390" fill="#e6e6e6" font-size="13">Compresión = 6 (JPEG)</text>
+<text x="344" y="411" fill="#e6e6e6" font-size="13">0x0201: offset de la miniatura</text>
+<text x="344" y="432" fill="#e6e6e6" font-size="13">0x0202: longitud en bytes</text>
+<rect x="32" y="340" width="250" height="100" rx="8" fill="#1b1024" stroke="#983AD6" stroke-width="2"/>
+<text x="46" y="366" fill="#FA93FA" font-size="16" font-weight="700">Entrada de IFD (12 B)</text>
+<text x="46" y="390" fill="#e6e6e6" font-size="13">etiqueta 2 B, tipo 2 B, cuenta 4 B</text>
+<text x="46" y="411" fill="#e6e6e6" font-size="13">valor u offset 4 B</text>
+<line x1="282" y1="155" x2="326" y2="155" stroke="#983AD6" stroke-width="2.5" marker-end="url(#f)"/>
+<line x1="600" y1="175" x2="636" y2="175" stroke="#983AD6" stroke-width="2.5" marker-end="url(#f)"/>
+<path d="M600,215 C620,215 615,340 636,340" fill="none" stroke="#983AD6" stroke-width="2.5" marker-end="url(#f)"/>
+<line x1="465" y1="300" x2="465" y2="336" stroke="#983AD6" stroke-width="2.5" marker-end="url(#f)"/>
+<text x="32" y="506" fill="#d6d6d6" font-size="13">Tipos: BYTE, ASCII, SHORT, LONG, RATIONAL (dos LONG), UNDEFINED, SLONG, SRATIONAL.</text>
+<text x="32" y="526" fill="#d6d6d6" font-size="13">Si el valor ocupa 4 bytes o menos va dentro de la entrada; si no, la entrada guarda su offset.</text>
+</svg>

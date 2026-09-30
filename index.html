@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Sin red: nada de fetch ni recursos externos. Las fotos no salen del navegador. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src blob:" />
+  <title>Analizador EXIF</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 56rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.4; }
+    #zona { display: block; border: 2px dashed #983ad6; border-radius: 0.5rem; padding: 2rem; text-align: center; cursor: pointer; }
+    #zona.encima { background: #f7ecfd; }
+    section { border-top: 1px solid #ddd; margin-top: 1.5rem; padding-top: 1rem; }
+    h2 { font-size: 1.1rem; margin: 0 0 0.5rem; word-break: break-all; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    td, th { border-bottom: 1px solid #eee; padding: 0.25rem 0.5rem; text-align: left; vertical-align: top; }
+    td:last-child { word-break: break-word; }
+    .alta { color: #b00020; } .media { color: #9a5b00; } .baja { color: #0a7a2f; } .ninguno { color: #0a7a2f; }
+    .error { color: #b00020; }
+    button { font: inherit; padding: 0.4rem 0.9rem; margin: 0.5rem 0.5rem 0.5rem 0; cursor: pointer; }
+    img.mini { max-width: 160px; border: 1px solid #ccc; display: block; margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Analizador EXIF</h1>
+  <p>Lee los metadatos de fotos JPEG, PNG y WebP, evalúa qué revelan y descarga una copia limpia sin recomprimir. Todo ocurre en tu navegador: no hay red.</p>
+  <label id="zona" for="archivos">Arrastra fotos aquí o haz clic para elegirlas
+    <input id="archivos" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden />
+  </label>
+  <div id="resultados"></div>
+  <script type="module">
+    import { analizar, limpiar, enlaceMapa } from "./dist/exif.js";
+
+    const zona = document.getElementById("zona");
+    const resultados = document.getElementById("resultados");
+    const el = (etiqueta, texto, clase) => {
+      const e = document.createElement(etiqueta);
+      if (texto !== undefined) e.textContent = texto;
+      if (clase) e.className = clase;
+      return e;
+    };
+
+    async function mostrar(archivo) {
+      const s = el("section");
+      s.append(el("h2", archivo.name));
+      resultados.append(s);
+      const datos = new Uint8Array(await archivo.arrayBuffer());
+      let a;
+      try {
+        a = analizar(datos);
+      } catch (e) {
+        s.append(el("p", e.message, "error"));
+        return;
+      }
+      s.append(el("p", `${a.formato.toUpperCase()}${a.orden ? `, TIFF ${a.orden}` : ""}, XMP: ${a.xmp ? "sí" : "no"}, IPTC: ${a.iptc ? "sí" : "no"}`));
+      s.append(el("p", a.riesgo.resumen, a.riesgo.nivel));
+      const ul = el("ul");
+      for (const h of a.riesgo.hallazgos) {
+        const li = el("li");
+        li.append(el("strong", `[${h.severidad}] ${h.campo}: `, h.severidad), `${h.valor}. ${h.motivo}`);
+        ul.append(li);
+      }
+      s.append(ul);
+
+      if (a.gps) {
+        const p = el("p");
+        const enlace = el("a", `Ver ${a.gps.lat}, ${a.gps.lon} en OpenStreetMap`);
+        enlace.href = enlaceMapa(a.gps);
+        enlace.target = "_blank";
+        enlace.rel = "noopener noreferrer";
+        p.append(enlace);
+        s.append(p);
+      }
+      if (a.miniatura) {
+        s.append(el("p", "Miniatura incrustada en el EXIF (puede diferir de la foto si se recortó):"));
+        const img = el("img", undefined, "mini");
+        img.alt = "Miniatura incrustada";
+        img.src = URL.createObjectURL(new Blob([a.miniatura], { type: "image/jpeg" }));
+        s.append(img);
+      }
+
+      const boton = el("button", "Descargar copia limpia");
+      boton.addEventListener("click", () => {
+        const l = limpiar(datos);
+        const enlace = el("a");
+        enlace.href = URL.createObjectURL(new Blob([l.datos], { type: archivo.type || "application/octet-stream" }));
+        enlace.download = `limpia-${archivo.name}`;
+        enlace.click();
+        setTimeout(() => URL.revokeObjectURL(enlace.href), 1000);
+        estado.textContent = `Quitado: ${l.quitado.length ? l.quitado.join(", ") : "nada"}. ${l.avisos.join(" ")}`;
+      });
+      const estado = el("p");
+      estado.setAttribute("role", "status");
+      s.append(boton, estado);
+
+      if (a.campos.length) {
+        const tabla = el("table");
+        const cab = el("tr");
+        cab.append(el("th", "Grupo"), el("th", "Campo"), el("th", "Valor"));
+        tabla.append(cab);
+        for (const c of a.campos) {
+          const tr = el("tr");
+          tr.append(el("td", c.grupo), el("td", c.nombre), el("td", c.valor));
+          tabla.append(tr);
+        }
+        s.append(tabla);
+      } else {
+        s.append(el("p", "Sin EXIF."));
+      }
+    }
+
+    const procesar = (lista) => { for (const f of lista) mostrar(f); };
+    document.getElementById("archivos").addEventListener("change", (e) => procesar(e.target.files));
+    zona.addEventListener("dragover", (e) => { e.preventDefault(); zona.classList.add("encima"); });
+    zona.addEventListener("dragleave", () => zona.classList.remove("encima"));
+    zona.addEventListener("drop", (e) => { e.preventDefault(); zona.classList.remove("encima"); procesar(e.dataTransfer.files); });
+  </script>
+</body>
+</html>

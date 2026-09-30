@@ -1,0 +1,15 @@
+{
+  "name": "analizador-exif",
+  "version": "1.0.0",
+  "description": "Lee EXIF de JPEG, PNG y WebP, evalúa el riesgo de privacidad y limpia los metadatos sin recomprimir.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test test/*.test.ts",
+    "demo": "npm run build && python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

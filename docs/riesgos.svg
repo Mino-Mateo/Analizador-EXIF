@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<rect width="900" height="400" rx="14" fill="#010101"/>
+<text x="32" y="44" fill="#FA93FA" font-size="22" font-weight="700">Niveles de riesgo de privacidad</text>
+<text x="32" y="70" fill="#d6d6d6" font-size="14">El nivel del informe es el del hallazgo más grave. Los parámetros de cámara se agrupan en un solo hallazgo bajo.</text>
+<rect x="32" y="92" width="268" height="280" rx="10" fill="#2a0a10" stroke="#ff5c6c" stroke-width="2"/>
+<rect x="32" y="92" width="268" height="44" rx="10" fill="#ff5c6c"/>
+<rect x="32" y="120" width="268" height="16" fill="#ff5c6c"/>
+<text x="166" y="121" fill="#010101" font-size="18" font-weight="800" text-anchor="middle">ALTA</text>
+<text x="48" y="162" fill="#ff5c6c" font-size="14" font-weight="700">Identifica personas o lugares</text>
+<circle cx="54" cy="189" r="4" fill="#ff5c6c"/>
+<text x="66" y="194" fill="#f0f0f0" font-size="14">Ubicación GPS</text>
+<circle cx="54" cy="217" r="4" fill="#ff5c6c"/>
+<text x="66" y="222" fill="#f0f0f0" font-size="14">Número de serie de cámara</text>
+<circle cx="54" cy="245" r="4" fill="#ff5c6c"/>
+<text x="66" y="250" fill="#f0f0f0" font-size="14">Número de serie de lente</text>
+<circle cx="54" cy="273" r="4" fill="#ff5c6c"/>
+<text x="66" y="278" fill="#f0f0f0" font-size="14">Dueño de la cámara</text>
+<circle cx="54" cy="301" r="4" fill="#ff5c6c"/>
+<text x="66" y="306" fill="#f0f0f0" font-size="14">Autor y Copyright</text>
+<circle cx="54" cy="329" r="4" fill="#ff5c6c"/>
+<text x="66" y="334" fill="#f0f0f0" font-size="14">Texto Author de PNG</text>
+<rect x="316" y="92" width="268" height="280" rx="10" fill="#2a1c05" stroke="#ffb547" stroke-width="2"/>
+<rect x="316" y="92" width="268" height="44" rx="10" fill="#ffb547"/>
+<rect x="316" y="120" width="268" height="16" fill="#ffb547"/>
+<text x="450" y="121" fill="#010101" font-size="18" font-weight="800" text-anchor="middle">MEDIA</text>
+<text x="332" y="162" fill="#ffb547" font-size="14" font-weight="700">Perfila o vincula fotos entre sí</text>
+<circle cx="338" cy="189" r="4" fill="#ffb547"/>
+<text x="350" y="194" fill="#f0f0f0" font-size="14">Fechas exactas y zona horaria</text>
+<circle cx="338" cy="217" r="4" fill="#ffb547"/>
+<text x="350" y="222" fill="#f0f0f0" font-size="14">Marca y modelo</text>
+<circle cx="338" cy="245" r="4" fill="#ffb547"/>
+<text x="350" y="250" fill="#f0f0f0" font-size="14">Software y equipo</text>
+<circle cx="338" cy="273" r="4" fill="#ffb547"/>
+<text x="350" y="278" fill="#f0f0f0" font-size="14">ID único de imagen</text>
+<circle cx="338" cy="301" r="4" fill="#ffb547"/>
+<text x="350" y="306" fill="#f0f0f0" font-size="14">Comentarios y MakerNote</text>
+<circle cx="338" cy="329" r="4" fill="#ffb547"/>
+<text x="350" y="334" fill="#f0f0f0" font-size="14">Miniatura, XMP, IPTC</text>
+<rect x="600" y="92" width="268" height="280" rx="10" fill="#06231a" stroke="#5fe39a" stroke-width="2"/>
+<rect x="600" y="92" width="268" height="44" rx="10" fill="#5fe39a"/>
+<rect x="600" y="120" width="268" height="16" fill="#5fe39a"/>
+<text x="734" y="121" fill="#010101" font-size="18" font-weight="800" text-anchor="middle">BAJA</text>
+<text x="616" y="162" fill="#5fe39a" font-size="14" font-weight="700">Suma a la huella del equipo</text>
+<circle cx="622" cy="189" r="4" fill="#5fe39a"/>
+<text x="634" y="194" fill="#f0f0f0" font-size="14">Exposición y apertura</text>
+<circle cx="622" cy="217" r="4" fill="#5fe39a"/>
+<text x="634" y="222" fill="#f0f0f0" font-size="14">ISO y flash</text>
+<circle cx="622" cy="245" r="4" fill="#5fe39a"/>
+<text x="634" y="250" fill="#f0f0f0" font-size="14">Distancia focal</text>
+<circle cx="622" cy="273" r="4" fill="#5fe39a"/>
+<text x="634" y="278" fill="#f0f0f0" font-size="14">Modelo de lente</text>
+<circle cx="622" cy="301" r="4" fill="#5fe39a"/>
+<text x="634" y="306" fill="#f0f0f0" font-size="14">Balance de blancos</text>
+<circle cx="622" cy="329" r="4" fill="#5fe39a"/>
+<text x="634" y="334" fill="#f0f0f0" font-size="14">Modo de medición</text>
+</svg>
